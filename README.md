@@ -9,7 +9,7 @@ Desafio ...
 * Docker
 * docker-compose
 
-## Pré requisito para roda o: Docker e docker-compose
+## Pré requisito para roda o projeto: docker e docker-compose
 
 #### Tutorial para instalação do docker no ubuntu
 
