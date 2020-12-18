@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'modulo_administrativo',
+    'modulo_agendamento',
+    'modulo_cartao_vacina',
 ]
 
 MIDDLEWARE = [
