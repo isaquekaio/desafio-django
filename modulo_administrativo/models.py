@@ -66,7 +66,7 @@ class Vacina(models.Model):
     estoque = models.ForeignKey(Estoque, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['qtd']
+        ordering = ['nome']
 
     def __str__(self):
         return self.nome
