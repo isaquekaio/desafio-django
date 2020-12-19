@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'modulo_agendamento',
     'modulo_cartao_vacina',
     'interface',
+    'pessoa',
 ]
 
 MIDDLEWARE = [
