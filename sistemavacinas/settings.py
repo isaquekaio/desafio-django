@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'moduloadministrativo.apps.ModuloadministrativoConfig',
+    'moduloagendamento.apps.ModuloagendamentoConfig',
+    'modulocartaovacina.apps.ModulocartaovacinaConfig',
+    'pessoa.apps.PessoaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'interface',
-    'pessoa',
 ]
 
 AUTH_USER_MODEL = 'pessoa.User'
