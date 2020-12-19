@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+{% load projeto_tags %}
+
+{% block title %}
+    {{ title_aba }}
+{% endblock %}
+
+{% block content %}
+
+    <div style="margin-top: 0.6%">
+        <h1 class="ml-4 font-weight-bold float-left">{{ title_page }}</h1>
+        <a href="{% url link_create %}" class="btn btn-outline-success float-right">Inserir</a>
+    </div>
+
+    <table class="table">
+        <tr>
+            {% for i in header %}
+                <th>{{ i }}</th>
+            {% endfor %}
+        </tr>
+        {% for i in data %}
+            <tr>
+                {% for attribute in attributes %}
+                    <td>{{ i|getattribute:attribute }}</td>
+
+                {% endfor %}
+                <td class="col-3">
+                    <a href="{% url link_update i.pk %}" class="btn btn-outline-primary">Atualizar</a>
+                    <a href="{% url link_delete i.pk %}" class="btn btn-outline-danger">Apagar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
