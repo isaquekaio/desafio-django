@@ -203,7 +203,7 @@ def listar_estoque(request):
         'header': ['lote', 'movimento'],
         'attributes': ['lote', 'movimento'],
         'link_create': 'cadastrar_estoque',
-        'link_update': 'atualizar_estoque',
+        'link_update': '',
         'link_delete': '',
         'title_page': 'Estoque',
         'title_aba': 'Estoque',
@@ -223,3 +223,32 @@ def cadastrar_estoque(request):
         'link_cancel': 'listar_estoque',
     }
     return render(request, 'pagina_generica/form.html', context)
+
+# CRUD EstoqueItem
+def listar_estoque_item(request):
+    context = {
+        'data': EstoqueItem.objects.order_by('saldo')[:10],
+        'header': ['Quantidade', 'Saldo', 'Estoque', 'Vacina', 'Ação'],
+        'attributes': ['qtd', 'saldo', 'estoque', 'vacina'],
+        'link_create': 'cadastrar_estoque_item',
+        'link_update': '',
+        'link_delete': '',
+        'title_page': 'Item do Estoque',
+        'title_aba': 'Item do Estoque',
+    }
+    return render(request, 'pagina_generica/index.html', context)
+
+def cadastrar_estoque_item(request):
+    form = EstoqueItemForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('listar_estoque_item')
+    context = {
+        'form': form,
+        'title_page': 'Cadastrar Estoque Item',
+        'title_aba': 'Cadastrar Estoque Item',
+        'link_cancel': 'listar_estoque_item',
+    }
+    return render(request, 'pagina_generica/form.html', context)
+

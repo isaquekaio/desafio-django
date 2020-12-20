@@ -16,6 +16,11 @@ class EstoqueForm(forms.ModelForm):
         model = Estoque
         fields = ['lote', 'movimento']
 
+class EstoqueItemForm(forms.ModelForm):
+    class Meta:
+        model = EstoqueItem
+        fields = ['qtd', 'saldo', 'estoque', 'vacina']
+
 class VacinaForm(forms.ModelForm):
     class Meta:
         model = Vacina

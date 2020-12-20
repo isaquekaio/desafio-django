@@ -28,6 +28,7 @@ urlpatterns = [
     path('estoque', listar_estoque, name='listar_estoque'),
     path('estoque/cadastrar', cadastrar_estoque, name='cadastrar_estoque'),
 
-
+    path('estoque_item', listar_estoque_item, name='listar_estoque_item'),
+    path('estoque_item/cadastrar', cadastrar_estoque_item, name='cadastrar_estoque_item'),
 
 ]
