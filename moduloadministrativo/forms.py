@@ -31,3 +31,8 @@ class ProfissionalForm(forms.ModelForm):
         model = Profissional
         fields = ['user','data_nascimento','cns','cpf','rg','orgao_expeditor','estabelecimentos']
 
+class CoordenadorForm(forms.ModelForm):
+    class Meta:
+        model = Coordenador
+        fields = ['user','data_nascimento','cpf']
+

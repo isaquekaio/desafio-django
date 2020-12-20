@@ -25,6 +25,10 @@ urlpatterns = [
     path('profissional/cadastrar', cadastrar_profissional, name='cadastrar_profissional'),
     path('profissional/atualizar/<int:pk>', atualizar_profissional, name='atualizar_profissional'),
 
+    path('coordenador', listar_coordenador, name='listar_coordenador'),
+    path('coordenador/cadastrar', cadastrar_coordenador, name='cadastrar_coordenador'),
+    path('coordenador/atualizar/<int:pk>', atualizar_coordenador, name='atualizar_coordenador'),
+
     path('estoque', listar_estoque, name='listar_estoque'),
     path('estoque/cadastrar', cadastrar_estoque, name='cadastrar_estoque'),
 

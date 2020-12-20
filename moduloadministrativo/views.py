@@ -252,3 +252,47 @@ def cadastrar_estoque_item(request):
     }
     return render(request, 'pagina_generica/form.html', context)
 
+# CRUD Coordenador
+def listar_coordenador(request):
+    context = {
+        'data': Coordenador.objects.order_by('user__username')[:10],
+        'header': ['Usuario','Data Nascimento','CPF','Ações'],
+        'attributes': ['user','data_nascimento','CPF'],
+        'link_create': 'cadastrar_coordenador',
+        'link_update': 'atualizar_coordenador',
+        'link_delete': '',
+        'title_page': 'Coordenador',
+        'title_aba': 'Coordenador',
+    }
+    return render(request, 'pagina_generica/index.html', context)
+
+def cadastrar_coordenador(request):
+    form = CoordenadorForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('listar_coordenador')
+    context = {
+        'form': form,
+        'title_page': 'Cadastrar Coordenador',
+        'title_aba': 'Cadastrar Coordenador',
+        'link_cancel': 'listar_coordenador',
+    }
+    return render(request, 'pagina_generica/form.html', context)
+
+def atualizar_coordenador(request, pk):
+    model = get_object_or_404(Coordenador, pk=pk)
+    form = CoordenadorForm(request.POST or None, instance=model)
+
+    if form.is_valid():
+        form.save()
+        return redirect('listar_coordenador')
+
+    context = {
+        'record': model,
+        'form': form,
+        'title_page': 'Atualizar Coordenador',
+        'title_aba': 'Atualizar Coordenador',
+        'link_cancel': 'listar_coordenador',
+    }
+    return render(request, 'pagina_generica/form.html', context)
