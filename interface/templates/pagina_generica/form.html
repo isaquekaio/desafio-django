@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ title_aba }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">{{ title_page }}</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <button class="btn btn-outline-primary" type="submit">Salvar</button>
+        <a href="{% url link_cancel %}" class="btn btn-outline-danger">Cancelar</a>
+    </form>
+
+{% endblock %}
