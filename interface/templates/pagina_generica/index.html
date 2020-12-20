@@ -25,8 +25,16 @@
 
                 {% endfor %}
                 <td class="col-3">
-                    <a href="{% url link_update i.pk %}" class="btn btn-outline-primary">Atualizar</a>
-                    <a href="{% url link_delete i.pk %}" class="btn btn-outline-danger">Apagar</a>
+                    {% if link_update != '' %}
+                        <a href="{% url link_update i.pk %}" class="btn btn-outline-primary">Atualizar</a>
+                    {% else %}
+                        <span class="btn btn-default" tabindex="-1" role="button" title="Alteração não permitida" data-toggle="tooltip">Alterar</span>
+                    {% endif %}
+                    {% if link_delete != '' %}
+                        <a href="{% url link_delete i.pk %}" class="btn btn-outline-danger">Apagar</a>
+                    {% else %}
+                        <span class="btn btn-default" tabindex="-1" role="button" title="Alteração não permitida" data-toggle="tooltip">Alterar</span>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}
