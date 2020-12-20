@@ -63,6 +63,7 @@ class Fabricante(models.Model):
 class Vacina(models.Model):
     nome = models.CharField('Vacina', max_length=200, blank=False)
     ml = models.SmallIntegerField('Ml')
+    lote = models.PositiveIntegerField('Lote')
     fabricante = models.ForeignKey(Fabricante, on_delete=models.CASCADE)
 
     class Meta:
@@ -77,7 +78,7 @@ ENUM_MOVIMETO = [
 ]
 
 class Estoque(models.Model):
-    lote = models.CharField('Lote', max_length=50)
+    nota_fiscal = models.CharField('Nota Fiscal', max_length=40)
     movimento = models.SmallIntegerField(choices=ENUM_MOVIMETO)
 
 class EstoqueItem(models.Model):

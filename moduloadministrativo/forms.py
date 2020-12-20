@@ -14,7 +14,7 @@ class FabricanteForm(forms.ModelForm):
 class EstoqueForm(forms.ModelForm):
     class Meta:
         model = Estoque
-        fields = ['lote', 'movimento']
+        fields = ['nota_fiscal', 'movimento']
 
 class EstoqueItemForm(forms.ModelForm):
     class Meta:
@@ -24,7 +24,7 @@ class EstoqueItemForm(forms.ModelForm):
 class VacinaForm(forms.ModelForm):
     class Meta:
         model = Vacina
-        fields = ['nome', 'ml', 'fabricante']
+        fields = ['nome', 'ml', 'lote','fabricante']
 
 class ProfissionalForm(forms.ModelForm):
     class Meta:
@@ -35,4 +35,3 @@ class CoordenadorForm(forms.ModelForm):
     class Meta:
         model = Coordenador
         fields = ['user','data_nascimento','cpf']
-
