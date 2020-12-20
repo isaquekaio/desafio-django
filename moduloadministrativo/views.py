@@ -55,6 +55,57 @@ def excluir_estabelecimento(request, pk):
     return redirect('listar_estabelecimento')
     #return HttpResponse("Teste Excluir")
 """
+
+# CRUD Fabricante
+def listar_fabricante(request):
+    context = {
+        'data': Fabricante.objects.order_by('nome')[:10],
+        'header': ['Nome'],
+        'attributes': ['nome'],
+        'link_create': 'cadastrar_fabricante',
+        'link_update': 'atualizar_fabricante',
+        'link_delete': 'excluir_fabricante',
+        'title_page': 'Fabricante',
+        'title_aba': 'Fabricante',
+    }
+    return render(request, 'pagina_generica/index.html', context)
+
+def cadastrar_fabricante(request):
+    form = FabricanteForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('listar_fabricante')
+    context = {
+        'form': form,
+        'title_page': 'Cadastrar Fabricante',
+        'title_aba': 'Cadastrar Fabricante',
+        'link_cancel': 'listar_fabricante',
+    }
+    return render(request, 'pagina_generica/form.html', context)
+
+def atualizar_fabricante(request, pk):
+    model = get_object_or_404(Fabricante, pk=pk)
+    form = FabricanteForm(request.POST or None, instance=model)
+
+    if form.is_valid():
+        form.save()
+        return redirect('listar_fabricante')
+
+    context = {
+        'record': model,
+        'form': form,
+        'title_page': 'Atualizar Fabricante',
+        'title_aba': 'Atualizar Fabricante',
+        'link_cancel': 'listar_fabricante',
+    }
+    return render(request, 'pagina_generica/form.html', context)
+
+def excluir_fabricante(request, pk):
+    model = get_object_or_404(Fabricante, pk=pk)
+    model.delete()
+    return redirect('listar_fabricante')
+
 # CRUD vacina
 def listar_vacina(request):
     context = {

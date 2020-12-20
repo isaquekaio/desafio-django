@@ -6,6 +6,11 @@ class EstabelecimentoForm(forms.ModelForm):
         model = Estabelecimento
         fields = ['nome', 'cnes', 'cnpj', 'uf', 'municipio']
 
+class FabricanteForm(forms.ModelForm):
+    class Meta:
+        model = Fabricante
+        fields = ['nome']
+
 class VacinaForm(forms.ModelForm):
     class Meta:
         model = Vacina
@@ -15,3 +20,4 @@ class ProfissionalForm(forms.ModelForm):
     class Meta:
         model = Profissional
         fields = ['user','data_nascimento','cns','cpf','rg','orgao_expeditor','estabelecimentos']
+
