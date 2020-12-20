@@ -9,4 +9,4 @@ class EstabelecimentoForm(forms.ModelForm):
 class VacinaForm(forms.ModelForm):
     class Meta:
         model = Vacina
-        fields = ['nome', 'estoque']
+        fields = ['nome', 'ml', 'fabricante']
