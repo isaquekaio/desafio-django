@@ -60,7 +60,7 @@ def excluir_estabelecimento(request, pk):
 def listar_fabricante(request):
     context = {
         'data': Fabricante.objects.order_by('nome')[:10],
-        'header': ['Nome'],
+        'header': ['Nome','Ações'],
         'attributes': ['nome'],
         'link_create': 'cadastrar_fabricante',
         'link_update': 'atualizar_fabricante',
@@ -200,7 +200,7 @@ def atualizar_profissional(request, pk):
 def listar_estoque(request):
     context = {
         'data': Estoque.objects.order_by('lote')[:10],
-        'header': ['lote', 'movimento'],
+        'header': ['lote', 'movimento', 'Ações'],
         'attributes': ['lote', 'movimento'],
         'link_create': 'cadastrar_estoque',
         'link_update': '',
