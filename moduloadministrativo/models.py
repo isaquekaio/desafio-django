@@ -51,24 +51,36 @@ class Vinculo(models.Model):
     estabelecimentos = models.ForeignKey(Estabelecimento, on_delete=models.CASCADE)
     profissional = models.ForeignKey(Profissional, on_delete=models.CASCADE)
 
-class Estoque(models.Model):
-    qtd = models.PositiveIntegerField('Quantidade')
-
-    class Meta:
-        ordering = ['qtd']
-
-    def __str__(self):
-        return self.qtd
-
-class Vacina(models.Model):
-    nome = models.CharField('Vacina', max_length=200, blank=False)
-    estoque = models.ForeignKey(Estoque, on_delete=models.CASCADE)
+class Fabricante(models.Model):
+    nome = models.CharField('Fabricante', max_length=100, blank=False)
 
     class Meta:
         ordering = ['nome']
 
     def __str__(self):
         return self.nome
+
+class Vacina(models.Model):
+    nome = models.CharField('Vacina', max_length=200, blank=False)
+    ml = models.SmallIntegerField('Ml')
+    fabricante = models.ForeignKey(Fabricante, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['nome']
+
+    def __str__(self):
+        return self.nome
+
+class Estoque(models.Model):
+    qtd = models.PositiveIntegerField('Quantidade')
+    movimentacao = models.SmallIntegerField(default=1, choices=[(1, 'Entrada'),(2, 'Saida')])
+    vacina = models.ForeignKey(Vacina, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['qtd']
+
+    def __str__(self):
+        return self.qtd
 
 class Coordenador(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
