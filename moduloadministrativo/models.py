@@ -78,7 +78,7 @@ ENUM_MOVIMETO = [
 ]
 
 class Estoque(models.Model):
-    nota_fiscal = models.CharField('Nota Fiscal', max_length=40)
+    nota_fiscal = models.CharField('Nota Fiscal', max_length=40, null=True)
     movimento = models.SmallIntegerField(choices=ENUM_MOVIMETO)
 
 class EstoqueItem(models.Model):
