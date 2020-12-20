@@ -99,3 +99,48 @@ def atualizar_vacina(request, pk):
         'link_cancel': 'listar_vacina',
     }
     return render(request, 'pagina_generica/form.html', context)
+
+# CRUD para Profissional
+def listar_profissional(request):
+    context = {
+        'data': Profissional.objects.order_by('user__username')[:10],
+        'header': ['Usuario','Data Nascimento','CNS','CPF','RG','Orgao Expeditor','Estabelecimentos','Ações'],
+        'attributes': ['user','data_nascimento','cns','cpf','rg','orgao_expeditor','estabelecimentos'],
+        'link_create': 'cadastrar_profissional',
+        'link_update': 'atualizar_profissional',
+        'link_delete': '',
+        'title_page': 'Profissional',
+        'title_aba': 'Profissional',
+    }
+    return render(request, 'pagina_generica/index.html', context)
+
+def cadastrar_profissional(request):
+    form = ProfissionalForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('listar_profissional')
+    context = {
+        'form': form,
+        'title_page': 'Cadastrar Profissional',
+        'title_aba': 'Cadastrar Profissional',
+        'link_cancel': 'listar_profissional',
+    }
+    return render(request, 'pagina_generica/form.html', context)
+
+def atualizar_profissional(request, pk):
+    model = get_object_or_404(Profissional, pk=pk)
+    form = ProfissionalForm(request.POST or None, instance=model)
+
+    if form.is_valid():
+        form.save()
+        return redirect('listar_profissional')
+
+    context = {
+        'record': model,
+        'form': form,
+        'title_page': 'Atualizar Profissional',
+        'title_aba': 'Atualizar Profissional',
+        'link_cancel': 'listar_profissional',
+    }
+    return render(request, 'pagina_generica/form.html', context)
