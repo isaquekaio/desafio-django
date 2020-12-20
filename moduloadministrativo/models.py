@@ -71,13 +71,23 @@ class Vacina(models.Model):
     def __str__(self):
         return self.nome
 
+ENUM_MOVIMETO = [
+    (1, 'Entrada'),
+    (2, 'Saida'),
+]
+
 class Estoque(models.Model):
+    lote = models.CharField('Lote', max_length=50)
+    movimento = models.SmallIntegerField(choices=ENUM_MOVIMETO)
+
+class EstoqueItem(models.Model):
     qtd = models.PositiveIntegerField('Quantidade')
-    movimentacao = models.SmallIntegerField(default=1, choices=[(1, 'Entrada'),(2, 'Saida')])
+    saldo = models.PositiveIntegerField('Saldo')
+    estoque = models.ForeignKey(Estoque, on_delete=models.CASCADE)
     vacina = models.ForeignKey(Vacina, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['qtd']
+        ordering = ['saldo']
 
     def __str__(self):
         return self.qtd
