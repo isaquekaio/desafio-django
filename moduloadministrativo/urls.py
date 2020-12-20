@@ -25,5 +25,9 @@ urlpatterns = [
     path('profissional/cadastrar', cadastrar_profissional, name='cadastrar_profissional'),
     path('profissional/atualizar/<int:pk>', atualizar_profissional, name='atualizar_profissional'),
 
+    path('estoque', listar_estoque, name='listar_estoque'),
+    path('estoque/cadastrar', cadastrar_estoque, name='cadastrar_estoque'),
+
+
 
 ]

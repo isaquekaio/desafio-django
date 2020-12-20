@@ -195,3 +195,31 @@ def atualizar_profissional(request, pk):
         'link_cancel': 'listar_profissional',
     }
     return render(request, 'pagina_generica/form.html', context)
+
+# CRUD Estoque
+def listar_estoque(request):
+    context = {
+        'data': Estoque.objects.order_by('lote')[:10],
+        'header': ['lote', 'movimento'],
+        'attributes': ['lote', 'movimento'],
+        'link_create': 'cadastrar_estoque',
+        'link_update': 'atualizar_estoque',
+        'link_delete': '',
+        'title_page': 'Estoque',
+        'title_aba': 'Estoque',
+    }
+    return render(request, 'pagina_generica/index.html', context)
+
+def cadastrar_estoque(request):
+    form = EstoqueForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('listar_estoque')
+    context = {
+        'form': form,
+        'title_page': 'Cadastrar Estoque',
+        'title_aba': 'Cadastrar Estoque',
+        'link_cancel': 'listar_estoque',
+    }
+    return render(request, 'pagina_generica/form.html', context)

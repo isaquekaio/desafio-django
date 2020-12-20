@@ -11,6 +11,11 @@ class FabricanteForm(forms.ModelForm):
         model = Fabricante
         fields = ['nome']
 
+class EstoqueForm(forms.ModelForm):
+    class Meta:
+        model = Estoque
+        fields = ['lote', 'movimento']
+
 class VacinaForm(forms.ModelForm):
     class Meta:
         model = Vacina
