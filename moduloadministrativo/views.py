@@ -9,7 +9,7 @@ def listar_estabelecimento(request):
         'attributes': ['nome', 'cnes', 'cnpj', 'uf', 'municipio'],
         'link_create': 'cadastrar_estabelecimento',
         'link_update': 'atualizar_estabelecimento',
-        'link_delete': 'excluir_estabelecimento',
+        'link_delete': '',
         'title_page': 'Estabelecimentos',
         'title_aba': 'Estabelecimentos',
     }

@@ -10,17 +10,17 @@ class Uf(models.Model):
         ordering = ['nome']
 
     def __str__(self):
-        return '%i - %s' % (self.pk, self.nome)
+        return self.nome
 
 class Municipio(models.Model):
     nome = models.CharField('UF', max_length=100, blank=False)
     uf = models.ForeignKey(Uf, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['nome']
+        ordering = ['uf']
 
     def __str__(self):
-        return '%i - %s' % (self.pk,self.nome)
+        return self.nome
 
 class Estabelecimento(models.Model):
     nome = models.CharField('UF', max_length=200, blank=False)
