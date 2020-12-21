@@ -200,8 +200,8 @@ def atualizar_profissional(request, pk):
 def listar_estoque(request):
     context = {
         'data': Estoque.objects.order_by('lote')[:10],
-        'header': ['lote', 'movimento', 'Ações'],
-        'attributes': ['lote', 'movimento'],
+        'header': ['Nota Fiscal', 'movimento', 'Ações'],
+        'attributes': ['nota_fiscal', 'movimento'],
         'link_create': 'cadastrar_estoque',
         'link_update': '',
         'link_delete': '',
