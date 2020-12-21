@@ -1,6 +1,7 @@
 from django.db import models
 from moduloadministrativo.models import *
 from modulocartaovacina.models import *
+
 # Create your models here.
 class Agenda(models.Model):
     vacina = models.ForeignKey(Vacina, on_delete=models.CASCADE)
@@ -23,12 +24,12 @@ ENUM_STATUS = [
 ]
 
 class FilaAtendimento(models.Model):
-    atendido = models.SmallIntegerField(default=2, choices=ENUM_STATUS)
+    status = models.SmallIntegerField(default=2, choices=ENUM_STATUS)
     agenda = models.ForeignKey(Agenda, on_delete=models.CASCADE)
-    observaco = models.CharField('Observação', max_length=200, blank=True, null=True)
+    observacao = models.CharField('Observação', max_length=200, blank=True, null=True)
 
     class Meta:
-        ordering = ['atendido']
+        ordering = ['status']
 
     def __str__(self):
-        return self.atendido
+        return self.status
