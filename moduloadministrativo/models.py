@@ -7,10 +7,10 @@ class Uf(models.Model):
     nome = models.CharField('UF', max_length=100, blank=False)
 
     class Meta:
-        ordering = ['pk']
+        ordering = ['nome']
 
     def __str__(self):
-        return self.nome
+        return '%i - %s' % (self.pk, self.nome)
 
 class Municipio(models.Model):
     nome = models.CharField('UF', max_length=100, blank=False)
@@ -20,7 +20,7 @@ class Municipio(models.Model):
         ordering = ['nome']
 
     def __str__(self):
-        return self.nome
+        return '%i - %s' % (self.pk,self.nome)
 
 class Estabelecimento(models.Model):
     nome = models.CharField('UF', max_length=200, blank=False)
@@ -42,14 +42,18 @@ class Profissional(models.Model):
     cpf = models.CharField('CPF',max_length=11)
     rg = models.CharField('RG', max_length=12)
     orgao_expeditor = models.CharField('Orgao Expeditor', max_length=100)
-    estabelecimentos = models.ManyToManyField(Estabelecimento, through='Vinculo')
+    estabelecimentos = models.ManyToManyField(Estabelecimento)
+
+    class Meta:
+        ordering = ['user']
 
     def __str__(self):
         return self.user.username
-
+"""
 class Vinculo(models.Model):
     estabelecimentos = models.ForeignKey(Estabelecimento, on_delete=models.CASCADE)
     profissional = models.ForeignKey(Profissional, on_delete=models.CASCADE)
+"""
 
 class Fabricante(models.Model):
     nome = models.CharField('Fabricante', max_length=100, blank=False)
@@ -63,7 +67,7 @@ class Fabricante(models.Model):
 class Vacina(models.Model):
     nome = models.CharField('Vacina', max_length=200, blank=False)
     ml = models.SmallIntegerField('Ml')
-    lote = models.PositiveIntegerField('Lote')
+    lote = models.CharField('Lote', max_length=50)
     fabricante = models.ForeignKey(Fabricante, on_delete=models.CASCADE)
 
     class Meta:
@@ -81,6 +85,12 @@ class Estoque(models.Model):
     nota_fiscal = models.CharField('Nota Fiscal', max_length=40, null=True)
     movimento = models.SmallIntegerField(choices=ENUM_MOVIMETO)
 
+    class Meta:
+        ordering = ['nota_fiscal']
+
+    def __str__(self):
+        return self.nota_fiscal
+
 class EstoqueItem(models.Model):
     qtd = models.PositiveIntegerField('Quantidade')
     saldo = models.PositiveIntegerField('Saldo')
@@ -91,12 +101,15 @@ class EstoqueItem(models.Model):
         ordering = ['saldo']
 
     def __str__(self):
-        return self.qtd
+        return '%i - %i' % (self.qtd, self.saldo)
 
 class Coordenador(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     data_nascimento = models.DateField('Data de Nascimento')
     cpf = models.CharField('CPF',max_length=11)
+
+    class Meta:
+        ordering = ['user']
 
     def __str__(self):
         return self.user.username
