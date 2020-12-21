@@ -25,7 +25,7 @@ class Municipio(models.Model):
 class Estabelecimento(models.Model):
     nome = models.CharField('UF', max_length=200, blank=False)
     cnes = models.CharField('CNES', max_length=45, blank=False)
-    cnpj = models.CharField('CNPJ', max_length=14, blank=False)
+    cnpj = models.CharField('CNPJ', max_length=20, blank=False)
     uf = models.ForeignKey(Uf, on_delete=models.CASCADE)
     municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE)
 
