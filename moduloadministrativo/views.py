@@ -110,8 +110,8 @@ def excluir_fabricante(request, pk):
 def listar_vacina(request):
     context = {
         'data': Vacina.objects.order_by('-nome')[:10],
-        'header': ['Nome', 'Estoque', 'Ações'],
-        'attributes': ['nome', 'estoque'],
+        'header': ['Nome','Lote','Fabricante','Estoque','Ações'],
+        'attributes': ['nome','lote','fabricante','estoque'],
         'link_create': 'cadastrar_vacina',
         'link_update': 'atualizar_vacina',
         'link_delete': '',
@@ -199,7 +199,7 @@ def atualizar_profissional(request, pk):
 # CRUD Estoque
 def listar_estoque(request):
     context = {
-        'data': Estoque.objects.order_by('lote')[:10],
+        'data': Estoque.objects.order_by('nota_fiscal')[:10],
         'header': ['Nota Fiscal', 'movimento', 'Ações'],
         'attributes': ['nota_fiscal', 'movimento'],
         'link_create': 'cadastrar_estoque',
