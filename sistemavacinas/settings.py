@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'interface',
+    'django_extensions',
 ]
 
 AUTH_USER_MODEL = 'pessoa.User'
