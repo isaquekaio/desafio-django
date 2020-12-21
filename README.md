@@ -1,6 +1,40 @@
 # desafio-django
 
-Desafio ...
+**Desafio Django**
+
+link: https://sistema-vacina-desafio.herokuapp.com/
+
+## Urls do Sistema no Heroku
+
+#### Clique no link acima e após a barra adicione qualquer trecho a seguir para utilizar o sistema: 
+
+##### Modulo Adminstrativo
+
+* `modulo_adm/estabelecimento`
+
+* `modulo_adm/fabricante` 
+   
+* `modulo_adm/vacina`
+
+* `modulo_adm/estoque`
+
+* `modulo_adm/estoque_item`
+
+* `modulo_adm/profissional`
+
+* `modulo_adm/coordenador`
+
+##### Modulo Cartão de Vacina
+
+* `modulo_cartao_vacina/paciente`
+
+* `modulo_cartao_vacina/cartao`
+
+##### Modulo Agendamento
+
+* `modulo_agendamento/agenda`
+
+* `modulo_agendamento/fila`
 
 ## Ambiente de desenvolvimento
 
