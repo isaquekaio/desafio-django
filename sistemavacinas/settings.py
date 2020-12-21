@@ -77,6 +77,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sistemavacinas.wsgi.application'
 
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
