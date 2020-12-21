@@ -1,5 +1,5 @@
 import csv
-from moduloadministrativo.models import Municipio
+from moduloadministrativo.models import Municipio, Uf
 
 
 def csv_to_list(filename: str) -> list:
@@ -14,12 +14,12 @@ def save_data(data):
 
     aux = []
     for item in data:
-        pk = item.get('Codigo_Municipio')
+        pk = int(item.get('Codigo_Municipio'))
         nome = item.get('Nome_Municipio')
-        uf = item.get('UF')
+        uf = Uf.objects.get(pk=int(item.get('UF')))
         obj = Municipio(
             pk=pk,
-            mome=nome,
+            nome=nome,
             uf=uf,
         )
         aux.append(obj)

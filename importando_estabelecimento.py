@@ -1,5 +1,5 @@
 import csv
-from moduloadministrativo.models import Estabelecimento
+from moduloadministrativo.models import Estabelecimento, Uf, Municipio
 
 
 def csv_to_list(filename: str) -> list:
@@ -15,8 +15,8 @@ def save_data(data):
         nome = item.get('NO_FANTASIA')
         cnes = item.get('CO_CNES')
         cnpj = item.get('NU_CNPJ')
-        uf = item.get('CO_ESTADO_GESTOR')
-        municipio = item.get('CO_MUNICIPIO_GESTOR')
+        uf = Uf.objects.get(pk=int(item.get('CO_ESTADO_GESTOR')))
+        municipio = Municipio.objects.get(pk=int(item.get('CO_MUNICIPIO_GESTOR')))
         obj = Estabelecimento(
             nome=nome,
             cnes=cnes,
