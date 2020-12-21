@@ -119,6 +119,6 @@ media
 .idea
 
 # Ignore migrations local
-**/migrations/*
+
 .DS_Store
 
